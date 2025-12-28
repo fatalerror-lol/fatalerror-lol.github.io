@@ -1,0 +1,74 @@
+---
+layout: default
+---
+<div class="essay-metadata">
+  <div><strong>LOG_ID:</strong> log_{{ page.date | date: "%j" }}</div>
+  <div><strong>MOOD:</strong> {{ page.mood }}</div>
+  <div><strong>SIGNAL:</strong> 
+    {% assign signals = page.signal | split: " / " %}
+    {% for s in signals %}
+      <a href="/metadata#{{ s | slugify }}">#{{ s }}</a> 
+    {% endfor %}
+  </div>
+  <div><strong>LENGTH:</strong> 
+    {% assign words = content | number_of_words %}
+    {% if words < 360 %}
+      short_log (~1 min)
+    {% elsif words < 1200 %}
+      medium_log (~{{ words | divided_by: 200 }} min)
+    {% else %}
+      long_log (~{{ words | divided_by: 200 }} min)
+    {% endif %}
+  </div>
+</div>
+
+<style>
+.essay-metadata {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    border: 1px solid #eee;
+    padding: 15px;
+    margin-bottom: 40px;
+    background: #f9f9f9;
+    color: #666;
+    line-height: 1.8;
+}
+.essay-metadata strong { color: var(--red); }
+.essay-metadata a { color: var(--red); text-decoration: none; border-bottom: 1px dotted; }
+</style>
+
+
+<article class="essay">
+  <header class="essay-header">
+    <!-- <div class="essay-date">{{ page.date | date: "%B %Y" }}</div> -->
+    <h1 class="essay-title">{{ page.title }}</h1>
+    {% if page.description %}
+      <p class="essay-subtitle">{{ page.description }}</p>
+    {% endif %}
+  </header>
+
+  <div class="essay-content">
+    {{ content }}
+  </div>
+
+  
+  <footer class="essay-footer">
+    <hr>
+    <div class="terminal-nav">
+		<p class="status-line">End of Log. [SIG_TERM_SUCCESS @ {{ "now" | date: "%H:%M" }}]</p>
+        
+        <div class="nav-commands">
+            {% if page.previous %}
+                <a href="{{ page.previous.url }}" class="nav-link">> prev_log: {{ page.previous.title | downcase }}</a>
+            {% endif %}
+
+            {% if page.next %}
+                <a href="{{ page.next.url }}" class="nav-link">> next_log: {{ page.next.title | downcase }}</a>
+            {% endif %}
+
+            <a href="/" class="nav-link">> ls /logs</a>
+        </div>
+    </div>
+  </footer>
+  
+</article>

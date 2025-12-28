@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} | {{ site.title }}</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://unpkg.com/littlefoot/dist/littlefoot.css" />
+
+    <style>
+	
+	/*original red hex #d32f2f*/
+	
+        :root { --red: #cc5500; --black: #1a1a1a; --paper: #fdfdfd; }
+        body { 
+            background: var(--paper); color: var(--black); 
+            font-family: 'EB Garamond', serif; font-size: 20px; line-height: 1.6;
+            max-width: 680px; margin: 40px auto; padding: 20px;
+        }
+        header { font-family: 'JetBrains Mono', monospace; margin-bottom: 50px; }
+        header a { text-decoration: none; color: var(--red); font-weight: bold; }
+        h1, h2, h3 { font-family: 'JetBrains Mono', monospace; line-height: 1.2; }
+        .post-meta { font-size: 0.9rem; color: #666; font-style: italic; }
+        nav a { margin-right: 15px; font-size: 0.9rem; color: #666; text-decoration: none; }
+        nav a:hover { border-bottom: 1px solid var(--red); }
+        /* Style the littlefoot button to match your theme */
+        .littlefoot__button { background-color: #eee; color: var(--red); border: none; }
+		
+		/* This adds "Smart Quotes" and better spacing for your essays */
+		main {
+			text-rendering: optimizeLegibility;
+			-webkit-font-smoothing: antialiased;
+		}
+
+		/* Make sure images (if you ever use them) don't overflow */
+		img {
+			max-width: 100%;
+			height: auto;
+			border-radius: 4px;
+		}
+
+		/* Subtle styling for the "Return to top" link in footnotes */
+		.footnotes {
+			font-size: 0.85rem;
+			margin-top: 50px;
+			border-top: 1px solid #eee;
+			padding-top: 20px;
+		}
+		
+		a { color: var(--black); transition: all 0.2s; }
+		a:hover { 
+			color: var(--red); 
+			text-decoration: none;
+			background-color: rgba(211, 47, 47, 0.1); 
+		}
+		
+		/* Typography & Colors */
+		:root { --red: #cc5500; --dim: #666; --bg: #fdfdfd; }
+
+		/* Grid for Homepage */
+		.category-grid { 
+			display: grid; 
+			grid-template-columns: 1fr 1fr; 
+			gap: 40px; 
+			margin-top: 30px; 
+		}
+
+		@media (max-width: 600px) { .category-grid { grid-template-columns: 1fr; } }
+
+		/* Post List Styling */
+		.post-list { list-style: none; padding: 0; }
+		.post-list li { margin-bottom: 10px; font-size: 1.1rem; }
+		.post-list a { text-decoration: none; color: var(--black); }
+		.post-list a:hover { color: var(--red); }
+
+		/* Essay Layout */
+		.essay-header { margin-bottom: 40px; text-align: center; }
+		.essay-date { font-family: monospace; color: var(--red); font-size: 0.9rem; }
+		.essay-title { font-size: 2.5rem; margin: 10px 0; border: none; }
+		.essay-subtitle { font-style: italic; color: var(--dim); margin-top: -10px; }
+
+		.essay-content p { margin-bottom: 1.5rem; text-align: justify; }
+
+		/* The 'fatalerror' link at the bottom */
+		.all-posts { font-family: monospace; text-decoration: none; color: var(--red); font-weight: bold; }
+		
+		/* Terminal Aesthetic */
+		.command {
+			color: var(--red);
+			font-weight: bold;
+			margin-bottom: 5px;
+		}
+
+		.sysinfo-box {
+			border-left: 2px solid #ddd;
+			padding-left: 15px;
+			margin-bottom: 30px;
+			font-style: italic;
+			color: #444;
+		}
+
+		.terminal-list {
+			list-style: none;
+			padding: 0;
+		}
+
+		.terminal-list li {
+			margin-bottom: 8px;
+			transition: transform 0.1s;
+		}
+
+		.terminal-list li:hover {
+			transform: translateX(5px);
+		}
+
+		.log-id {
+			color: #999;
+			margin-right: 10px;
+		}
+
+		.prompt {
+			color: var(--red);
+			margin-right: 5px;
+			font-weight: bold;
+		}
+
+		.arrow {
+			opacity: 0.3;
+			margin-left: 10px;
+		}
+
+		/* The Blinking Cursor on the Header */
+		header a::after {
+			content: "_";
+			animation: blink 1s infinite;
+		}
+
+		@keyframes blink { 50% { opacity: 0; } }
+		
+		/* Scanline Effect */
+		.terminal-intro::before {
+			content: " ";
+			display: block;
+			position: absolute;
+			top: 0; left: 0; bottom: 0; right: 0;
+			/* This creates the horizontal lines */
+			background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
+						linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+			background-size: 100% 4px, 3px 100%;
+			z-index: 10;
+			pointer-events: none; /* Allows you to still click links underneath */
+		}
+
+		/* Subtle Flicker */
+		@keyframes flicker {
+			0% { opacity: 0.97; }
+			5% { opacity: 0.95; }
+			10% { opacity: 0.97; }
+			100% { opacity: 1; }
+		}
+
+		.terminal-intro {
+			position: relative;
+			animation: flicker 0.1s infinite;
+		}
+		
+		.terminal-list li a:hover {
+		color: var(--paper);
+		background-color: var(--red);
+		box-shadow: 4px 0px 0px var(--red), -4px 0px 0px var(--red);
+		text-transform: uppercase; /* Makes it feel like an alert */
+		}
+		
+		.terminal-list li a:hover {
+		color: var(--red);
+		/* Creates tiny horizontal lines: 2px red, 2px transparent */
+		background: repeating-linear-gradient(
+			0deg,
+			rgba(211, 47, 47, 0.15),
+			rgba(211, 47, 47, 0.15) 2px,
+			transparent 2px,
+			transparent 4px
+		);
+		padding: 2px 5px;
+		text-decoration: none;
+		}
+
+		.terminal-list li:hover {
+			transform: translateX(8px);
+			transition: transform 0.1s steps(2); /* 'steps' makes it look jerky/mechanical */
+		}		
+		
+		.system-status {
+			display: flex;
+			justify-content: space-between;
+			font-family: 'JetBrains Mono', monospace;
+			font-size: 0.7rem;
+			color: var(--dim);
+			border-bottom: 1px solid #eee;
+			padding-bottom: 5px;
+			margin-bottom: 20px;
+			text-transform: uppercase;
+		}		
+		
+		
+		.signal-group {
+			margin-bottom: 30px;
+			border-top: 1px solid #f0f0f0;
+			padding-top: 10px;
+		}
+		.signal-group h4 {
+			font-family: 'JetBrains Mono', monospace;
+			color: var(--red);
+			margin-bottom: 10px;
+		}
+		
+		/* Unified Scanline Hover for Terminal-style links */
+		.terminal-list li a:hover,
+		.signal-group ul li a:hover,
+		.all-posts:hover {
+			color: var(--red);
+			/* Tiny horizontal lines: 2px red-tint, 2px transparent */
+			background: repeating-linear-gradient(
+				0deg,
+				rgba(211, 47, 47, 0.12),
+				rgba(211, 47, 47, 0.12) 2px,
+				transparent 2px,
+				transparent 4px
+			);
+			padding: 2px 4px;
+			text-decoration: none;
+			/* Optional: subtle jerky shift to look like a glitchy UI */
+			display: inline-block;
+			transform: translateX(4px);
+			transition: transform 0.1s steps(2);
+		}
+		
+		html {
+			scroll-behavior: smooth;
+			scroll-padding-top: 50px; /* Adjust this so the header doesn't hit the top edge */
+		}
+		
+		/* The Fade-In Animation */
+		@keyframes fadeInPage {
+			from { opacity: 0; transform: translateY(5px); }
+			to { opacity: 1; transform: translateY(0); }
+		}
+
+		body {
+			animation: fadeInPage 0.4s ease-out;
+		}
+		
+		.terminal-intro p, .sysinfo-box, .log-directory {
+			opacity: 0;
+			animation: fadeInPage 0.3s ease-out forwards;
+		}
+
+		.terminal-intro p { animation-delay: 0.1s; }
+		.sysinfo-box    { animation-delay: 0.3s; }
+		.log-directory  { animation-delay: 0.5s; }
+		
+				@keyframes glitchFlash {
+			0% { background-color: var(--red); opacity: 0.2; }
+			100% { background-color: transparent; opacity: 1; }
+		}
+
+		/* This triggers a quick flash on the main container when the page loads */
+		main {
+			animation: glitchFlash 0.15s ease-out;
+		}
+		
+		.system-status {
+			opacity: 0;
+			animation: fadeInPage 0.2s ease-in forwards;
+			animation-delay: 0.1s;
+			border-bottom: 1px solid rgba(211, 47, 47, 0.3);
+		}
+
+		/* Make the status text 'pulse' slightly */
+		.system-status span:first-child {
+			animation: pulse 2s infinite;
+		}
+
+		@keyframes pulse {
+			0% { opacity: 1; }
+			50% { opacity: 0.5; }
+			100% { opacity: 1; }
+		}
+		
+		.terminal-nav {
+			margin-top: 50px;
+			font-family: 'JetBrains Mono', monospace;
+			font-size: 0.9rem;
+		}
+
+		.status-line {
+			color: var(--dim);
+			margin-bottom: 20px;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+		}
+
+		.nav-commands {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+		}
+
+		.nav-link {
+			text-decoration: none;
+			color: var(--black);
+			width: fit-content;
+		}
+
+		/* Apply that same scanline hover effect here! */
+		.nav-link:hover {
+			color: var(--red);
+			background: repeating-linear-gradient(
+				0deg,
+				rgba(211, 47, 47, 0.12),
+				rgba(211, 47, 47, 0.12) 2px,
+				transparent 2px,
+				transparent 4px
+			);
+			padding: 2px 4px;
+			transform: translateX(5px);
+			transition: transform 0.1s steps(2);
+		}
+
+
+
+:root {
+    /* We are hijacking Littlefoot's internal variables */
+    --popover-background-color: #1a1a1a !important;
+    --popover-text-color: #e0e0e0 !important;
+    --popover-border: 1px solid var(--red) !important;
+    --popover-border-radius: 0px !important;
+    --popover-font-family: 'JetBrains Mono', monospace !important;
+    --popover-font-size: 0.8rem !important;
+    --popover-line-height: 1.6 !important;
+    --popover-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3) !important;
+    --popover-tooltip-size: 0.6rem !important;
+    
+    /* This fixes the button/caret specifically */
+    --button-background-color: transparent !important;
+    --button-text-color: var(--red) !important;
+    --button-border: 1px solid rgba(211, 47, 47, 0.3) !important;
+    --button-border-radius: 0px !important;
+}
+
+/* Ensure the footnote content doesn't inherit the main essay's serif font */
+.littlefoot__content, .littlefoot__popover {
+    font-family: 'JetBrains Mono', monospace !important;
+}
+
+
+
+    </style>
+</head>
+<body>
+
+	<header>
+		<div class="site-title"><a href="/">FatalError | System Logs of sysnomad</a></div>
+		<p class="tagline">Essays on stories, film, and the human glitch.</p>
+		<nav>
+			<a href="/metadata">./metadata</a>
+			<a href="/contact">./contact</a>
+		</nav>
+	</header>  
+
+    <main>
+        {{ content }}
+    </main>
+
+    <script src="https://unpkg.com/littlefoot/dist/littlefoot.js" type="application/javascript"></script>
+    <script type="application/javascript">
+		littlefoot.default({
+			buttonTemplate: `
+				<button aria-label="Footnote <% number %>" class="littlefoot__button">
+					^
+				</button>
+			`,
+			allowMultipleSets: true,
+			activateDelay: 0
+		})
+
+
+    </script>
+	
+	
+</body>
+</html>
