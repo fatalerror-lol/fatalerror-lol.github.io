@@ -27,7 +27,7 @@ title: signal
 
     <button type="submit" class="nav-link">> send_signal</button>
 	
-	<input type="hidden" name="redirect" value="http://localhost:4000/success">
+	<input type="hidden" name="redirect" value="http://fatalerror.lol/success">
 </form>
 
 <style>
