@@ -9,6 +9,12 @@ url: "https://fatalerror-lol.github.io/" # Change this to your actual GitHub URL
 markdown: kramdown
 kramdown:
   footnote_nr: 1
+
+
+# RSS
+plugins:
+  - jekyll-feed
+
   
 # Exclude things you don't want the public to see
 exclude:
