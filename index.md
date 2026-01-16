@@ -18,6 +18,8 @@ title: terminal
   </div>
 </div>
 
+<span class="prompt">></span> <a href="/feed.xml">subscribe_rss</a>
+
 <div class="log-directory">
   <p class="command">> ls ./logs</p>
   <ul class="terminal-list">
@@ -31,3 +33,4 @@ title: terminal
     {% endfor %}
   </ul>
 </div>
+

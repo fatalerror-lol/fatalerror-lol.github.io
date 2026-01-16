@@ -9,6 +9,8 @@
     
     <link rel="stylesheet" href="https://unpkg.com/littlefoot/dist/littlefoot.css" />
 
+	{% feed_meta %}
+
     <style>
 	
 	/*original red hex #d32f2f*/
@@ -49,7 +51,7 @@
 			padding-top: 20px;
 		}
 		
-		a { color: var(--black); transition: all 0.2s; }
+		a { color: var(--black); transition: all 0.2s; text-decoration: none; }
 		a:hover { 
 			color: var(--red); 
 			text-decoration: none;
@@ -104,6 +106,10 @@
 		.terminal-list {
 			list-style: none;
 			padding: 0;
+			
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis; /* Adds "..." if the name is too long for the screen */
 		}
 
 		.terminal-list li {
