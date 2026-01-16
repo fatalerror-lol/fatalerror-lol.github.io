@@ -58,7 +58,7 @@ Listen, I'm not going to hard-sell you on this. You're an adult (probably). You 
 
 - **No clean endings.** Some logs will have resolution. Most won't. Sometimes the point IS the mess. Sometimes I'm still figuring out what the story means while I'm writing it.
 
-- **Footnotes.** Did I mention the footnotes? I'm mentioning them again. They're Pratchett-style. They're where the tangents live. They're the overthinking overflow. If you don't like footnotes, this is not your circus.
+- **Footnotes.** Did I mention the footnotes? I'm mentioning them again. They're where the tangents live. They're the overthinking overflow. If you don't like footnotes, this is not your circus.
 
 ### Why should you ignore this?
 
