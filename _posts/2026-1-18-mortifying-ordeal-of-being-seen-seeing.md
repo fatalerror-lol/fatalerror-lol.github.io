@@ -12,7 +12,7 @@ length:
 
 There's this thing I do when I write about film, where I'll finish an essay about some director's use of negative space or whatever, and then I'll stop and ask myself: **"Does this have 'PLEASE NOTICE ME SENPAI' vibes?"**[^1]
 
-[^1]: For the uninitiated: "Notice me senpai" comes from anime fandom, where an underclassman (kouhai) desperately wants acknowledgment from their admired senior (senpai). It's become shorthand for that specific flavor of cringe where your admiration tips over into something... yearning. Uncomfortable. A little too visible.
+[^1]: For the uninitiated: "Notice me senpai" comes from anime fandom, where an underclassman *(kouhai)* desperately wants acknowledgment from their admired senior *(senpai)*. It's become shorthand for that specific flavor of cringe where your admiration tips over into something... yearning. Uncomfortable. A little too visible.
 
 Here's the thing—I grew up in a household where art criticism was like breathing. My mom taught us to develop an eye for things, to look at paintings and see not just pretty colors but *choices*. Composition. Light. The deliberate way a brushstroke destroys or creates meaning.
 
